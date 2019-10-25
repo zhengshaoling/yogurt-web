@@ -1,0 +1,128 @@
+/*加载文件*/
+#loading{
+  background:rgba(0,0,0,0.5);
+  text-align: center;
+  color: #fff;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  margin: 0;
+}
+#loading span{
+   position: relative;
+   top:20%;
+}
+
+.el-table--medium td, .el-table--medium th {
+  padding: 5px 0;
+}
+
+
+/* 字体 */
+.menu-wrapper .ufa-icon {
+  margin-right: 5px;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  color: rgb(191, 203, 217);
+}
+
+/* 筛选表格图标 */
+.ufa-table-column {
+  border: 1px solid #ccc;
+  padding: 3px;
+  float: right;
+  margin-right: 5px;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.all_btn {
+  min-height: 30px;
+  margin-bottom: 10px;
+}
+
+.is_required:before {
+  content: '*';
+  color: #f56c6c;
+  margin-right: 4px;
+}
+
+.must div:before {
+  content: '*';
+  color: #f56c6c;
+  margin-right: 4px;
+}
+
+/* number样式 */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[readonly] {
+  cursor: not-allowed
+}
+
+.el-button--medium {
+  padding: 10px
+}
+
+.el-button--text {
+  padding: 0 !important;
+}
+
+/*表格超过省略号显示*/
+.el-table .cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/** 折叠面板样式更改 start **/
+.ufa-custom .el-collapse {
+  border-top: none !important;
+}
+
+.custom .el-collapse-item__header {
+  height: 40px !important;
+  line-height: 40px !important;
+}
+
+.custom .el-collapse-item__arrow {
+  line-height: 40px !important;
+}
+
+.custom .el-collapse-item__content {
+  padding-bottom: 10px !important;
+}
+/** 折叠面板样式更改 end **/
+
+
+
+
+/*重置样色*/
+/*.el-button--primary{*/
+  /*background-color: #FF9C00;*/
+  /*border-color: #FF9C00;*/
+/*}*/
+/*.el-button--primary:focus, .el-button--primary:hover{*/
+  /*background-color: rgba(255, 156, 0,0.9);*/
+  /*border-color: #FF9C00; */
+/*}*/
+
+.el-table th {
+  background-color: #fafafa;
+}
+
