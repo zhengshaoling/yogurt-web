@@ -66,6 +66,20 @@ export const constantRouterMap = [
       },
       component: _import('artificier/index')
     }]
+  },
+  {
+    path: '/package',
+    component: Layout,
+    name: 'Package',
+    hidden: true,
+    children: [{
+      path: 'index',
+      name: "packageList",
+      meta: {
+        title: '套餐管理'
+      },
+      component: _import('package/index')
+    }]
   }
 
 ]

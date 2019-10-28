@@ -4,6 +4,13 @@
   </div>
 </template>
 <script>
+  export default {
+    props: {
+      artificierId: {
+        type: String
+      }
+    }
+  }
 
 </script>
 <style rel="stylesheet/scss" type="scss" scoped>
