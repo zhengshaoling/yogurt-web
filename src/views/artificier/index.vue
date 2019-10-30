@@ -5,7 +5,6 @@
     </div>
     <div class="all_btn">
       <el-button type="primary" @click="addArtificier">添加</el-button>
-      <el-button @click="packageManage">套餐管理</el-button>
       <el-button @click="delMost">批量删除</el-button>
     </div>
     <list-table ref="artificierTable" :params="query" :api="getArtificierList" @selection-change="handleSelectionChange">
@@ -25,20 +24,45 @@
         </template>
       </el-table-column>
     </list-table>
+
+    <div v-if="showDetail">
+      <el-dialog :visible.sync="showDetail" :append-to-body="true" title="技师详情" width="70%">
+        <detail :artificier-id="artificierId" />
+      </el-dialog>
+    </div>
+    <div v-if="showEdit">
+      <el-dialog :visible.sync="showEdit" :append-to-body="true" title="编辑技师" width="70%">
+        <edit :artificier-id="artificierId"></edit>
+      </el-dialog>
+    </div>
+
+    <div v-if="showAdd">
+      <el-dialog :visible.sync="showAdd" :append-to-body="true" title="添加技师" width="70%">
+        <add />
+      </el-dialog>
+    </div>
   </div>
 </template>
 <script>
   import formSearch from '@/components/FormSearch';
   import listTable from '@/components/ListTable';
+  import detail from './component/detail'
+  import edit from './component/editAritificier'
+  import add from './component/addAritificier'
   import { getArtificierList, handleDeleteArtificier } from "@/api/artificier";
+  import EditAritificier from "./component/editAritificier";
   export default {
     name: 'artificierList',
-    components: { formSearch, listTable },
+    components: {EditAritificier, formSearch, listTable, detail, edit, add },
     data() {
       return {
         getArtificierList,
         multipleSelection: [],
         query: {},
+        showDetail: false,
+        showAdd: false,
+        showEdit: false,
+        artificierId: null,
         formData: {
           commonList: [
             {
@@ -88,7 +112,8 @@
       },
       // 编辑
       edit(id) {
-
+        this.artificierId = id;
+        this.showEdit = true;
       },
       // 删除
       deleteRow(id) {
@@ -101,11 +126,7 @@
       },
       // 新增技师
       addArtificier() {
-
-      },
-      // 套餐管理
-      packageManage() {
-
+        this.showAdd = true;
       },
       // 批量删除
       delMost() {

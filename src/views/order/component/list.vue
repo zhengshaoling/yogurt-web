@@ -24,21 +24,34 @@
 
     <div v-if="showDetail">
       <el-dialog :visible.sync="showDetail" :append-to-body="true" title="订单详情" width="70%">
-        <detail :order-id="orderId" />
+        <detail :order-id = 'orderId' />
       </el-dialog>
     </div>
+    <div v-if="showAdd">
+      <el-dialog :visible.sync="showAdd" :append-to-body="true" title="添加订单" width="70%">
+        <add />
+      </el-dialog>
+    </div>
+    <div v-if="showEdit">
+      <el-dialog :visible.sync="showEdit" :append-to-body="true" title="编辑订单" width="70%">
+        <edit :order-id = 'orderId'/>
+      </el-dialog>
+    </div>
+
   </div>
 </template>
 <script>
   import formSearch from '@/components/FormSearch';
   import pagination from '@/components/Pagination'
   import listTable from '@/components/ListTable';
-  import detail from './detail'
+  import detail from './detail';
+  import add from './addOrder';
+  import edit from './editOrder';
   import { getOrderList, handleDeleteOrder } from "@/api/order";
   import { defaultPage } from '@/utils/default'
   export default {
     name: 'orderList',
-    components: { formSearch, pagination, listTable, detail },
+    components: { formSearch, pagination, listTable, detail, add, edit },
     props: {
       type: {
         type: String,
@@ -53,6 +66,8 @@
           status: this.type // 当前选中的tab
         },
         showDetail: false,
+        showAdd: false,
+        showEdit: false,
         orderId: null,
         formData: {
           commonList: [
@@ -119,7 +134,8 @@
       },
       // 编辑
       edit(id) {
-
+        this.orderId = id;
+        this.showEdit = true;
       },
       // 删除
       deleteRow(id) {
@@ -136,7 +152,7 @@
       },
       // 添加订单
       addOrder() {
-
+        this.showAdd = true;
       },
       // 批量推送
       pushMost() {
