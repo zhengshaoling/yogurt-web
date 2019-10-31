@@ -4,7 +4,7 @@
       <form-search ref="formSearch" :form-data="formData" :pan-params="query" @onSubmit="onSubmit" @reset="resetQuery" />
     </div>
     <div class="all_btn">
-      <el-button type="primary" @click="addOrder">添加</el-button>
+      <el-button type="primary" icon="el-icon-circle-plus-outline" @click="addOrder">添加</el-button>
       <el-button @click="pushMost">批量推送</el-button>
 
     </div>

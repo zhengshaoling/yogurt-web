@@ -22,7 +22,7 @@
     </el-form>
     <div class="all_btn">
       <el-button type="primary" icon="el-icon-circle-plus-outline" @click="handleAdd()">添加</el-button>
-      <el-button @click="resetAdd()">重置</el-button>
+      <el-button type="danger" icon="el-icon-back" @click="resetAdd()">重置</el-button>
     </div>
   </div>
 </template>

@@ -80,6 +80,20 @@ export const constantRouterMap = [
       },
       component: _import('package/index')
     }]
+  },
+  {
+    path: '/account',
+    component: Layout,
+    name: 'Account',
+    hidden: true,
+    children: [{
+      path: 'index',
+      name: "accountIndex",
+      meta: {
+        title: '系统账户管理'
+      },
+      component: _import('account/index')
+    }]
   }
 
 ]

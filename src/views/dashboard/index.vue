@@ -57,6 +57,7 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
+    transform: translate(0, 40%);
     .tableBox {
       width: 500px;
       min-height: 400px;

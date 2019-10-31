@@ -4,7 +4,7 @@
       <form-search ref="formSearch" :form-data="formData" :pan-params="query" @onSubmit="onSubmit" @reset="resetQuery" />
     </div>
     <div class="all_btn">
-      <el-button type="primary" @click="addPackage">添加</el-button>
+      <el-button type="primary" icon="el-icon-circle-plus-outline" @click="addPackage">添加</el-button>
       <el-button @click="packageManage">套餐管理</el-button>
       <el-button @click="delMost">批量删除</el-button>
     </div>

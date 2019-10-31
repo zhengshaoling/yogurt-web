@@ -4,7 +4,7 @@
       <form-search ref="formSearch" :form-data="formData" :pan-params="query" @onSubmit="onSubmit" @reset="resetQuery" />
     </div>
     <div class="all_btn">
-      <el-button type="primary" @click="addArtificier">添加</el-button>
+      <el-button type="primary" icon="el-icon-circle-plus-outline" @click="addArtificier">添加</el-button>
       <el-button @click="delMost">批量删除</el-button>
     </div>
     <list-table ref="artificierTable" :params="query" :api="getArtificierList" @selection-change="handleSelectionChange">
@@ -53,7 +53,7 @@
   import EditAritificier from "./component/editAritificier";
   export default {
     name: 'artificierList',
-    components: {EditAritificier, formSearch, listTable, detail, edit, add },
+    components: { EditAritificier, formSearch, listTable, detail, edit, add },
     data() {
       return {
         getArtificierList,
