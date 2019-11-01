@@ -94,6 +94,20 @@ export const constantRouterMap = [
       },
       component: _import('account/index')
     }]
+  },
+  {
+    path: '/feedBack',
+    component: Layout,
+    name: 'FeedBack',
+    hidden: true,
+    children: [{
+      path: 'index',
+      name: 'feedBackIndex',
+      meta: {
+        title: '意见反馈'
+      },
+      component: _import('feedBack/index')
+    }]
   }
 
 ]

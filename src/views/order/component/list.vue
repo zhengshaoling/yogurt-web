@@ -16,6 +16,8 @@
         <template slot-scope="scope">
           <el-button type="text" @click="detail(scope.row.id)">详情</el-button>
           <el-button type="text" @click="pushToArtificier(scope.row.id)">推送给技师</el-button>
+          <el-button type="text" @click="agree(scope.row.id)">同意</el-button>
+          <el-button type="text" @click="reject(scope.row.id)">驳回</el-button>
           <el-button type="text" @click="edit(scope.row.id)">修改</el-button>
           <el-button type="text" @click="deleteRow(scope.row.id)">删除</el-button>
         </template>
@@ -148,6 +150,14 @@
       },
       // 推送给技师
       pushToArtificier(id) {
+
+      },
+      // 审核通过
+      agree(id) {
+
+      },
+      // 拒绝驳回
+      reject(id) {
 
       },
       // 添加订单
