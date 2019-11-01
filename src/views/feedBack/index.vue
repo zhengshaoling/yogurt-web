@@ -12,6 +12,11 @@
       <el-table-column prop="accountId" label="用户账号" width="150" align="center" show-overflow-tooltip />
       <el-table-column prop="suggestion" label="反馈意见" width="250" align="center" show-overflow-tooltip />
       <el-table-column prop="date" label="反馈时间" width="100" align="center" show-overflow-tooltip />
+      <el-table-column label="操作" min-width="150" align="center">
+        <template slot="scope">
+          <el-button type="text" @click="delFeedBack(scope.row.id)">删除</el-button>
+        </template>
+      </el-table-column>
     </list-table>
   </div>
 </template>
@@ -37,15 +42,26 @@
               label: '日期范围'
             }
           ]
-        }
+        },
+        feedBackId: null
       }
     },
     methods: {
-      onSubmit() {
-
+      onSubmit(data) {
+        this.query = { ...data };
       },
       resetQuery() {
         this.query = {};
+      },
+      async delFeedBack(id) {
+        this.feedBackId = id;
+        await this.$confirm('删除后无法撤回,是否确认删除?');
+        await handleDeleteFeedBack(this.feedBackId);
+        await this.$message('删除成功')
+        this.tableReload();
+      },
+      tableReload() {
+        this.$refs.feedBackTable.reload();
       }
     }
 
