@@ -15,18 +15,12 @@ export const constantRouterMap = [
     hidden: true
   },
   {
-    path: '/',
-    redirect: '/login',
-    component: _import('login/index'),
-    hidden: true
-  },
-  {
     path: '/404',
     component: _import('404'),
     hidden: true
   },
   {
-    path: '/dashboard',
+    path: '/',
     component: Layout,
     name: 'Dashboard',
     hidden: true,
