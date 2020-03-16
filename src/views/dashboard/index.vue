@@ -1,5 +1,28 @@
 <template>
-  <div id="dashboard">
+  <div class="warp">
+    <div class="item"><img src="../../assets/images/0.png" /></div>
+    <div class="item"><img src="../../assets/images/1.png" /></div>
+    <div class="item"><img src="../../assets/images/2.png" /></div>
+    <div class="item"><img src="../../assets/images/3.jpg" /></div>
+    <div class="item"><img src="../../assets/images/4.png" /></div>
+    <div class="item"><img src="../../assets/images/5.png" /></div>
+    <div class="item"><img src="../../assets/images/6.png" /></div>
+    <div class="item"><img src="../../assets/images/7.jpg" /></div>
+    <div class="item"><img src="../../assets/images/8.png" /></div>
+    <div class="item"><img src="../../assets/images/9.png" /></div>
+    <div class="item"><img src="../../assets/images/0.png" /></div>
+    <div class="item"><img src="../../assets/images/1.png" /></div>
+    <div class="item"><img src="../../assets/images/2.png" /></div>
+    <div class="item"><img src="../../assets/images/3.jpg" /></div>
+    <div class="item"><img src="../../assets/images/4.png" /></div>
+    <div class="item"><img src="../../assets/images/5.png" /></div>
+    <div class="item"><img src="../../assets/images/6.png" /></div>
+    <div class="item"><img src="../../assets/images/7.jpg" /></div>
+    <div class="item"><img src="../../assets/images/8.png" /></div>
+    <div class="item"><img src="../../assets/images/9.png" /></div>
+  </div>
+
+  <!--<div id="dashboard">
     <div class="tableBox">
       <div class="title">
         <div class="name">新增数据</div>
@@ -36,9 +59,10 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 </template>
 <script>
+import $ from 'jquery';
 export default {
   data() {
     return {
@@ -49,10 +73,82 @@ export default {
         {id: 3, name: '本季度'}
       ]
     }
+  },
+  mounted() {
+    this.waterFall();
+  },
+
+  methods: {
+    waterFall() {
+      var box = $(".item");
+      var boxWidth = $(box).outerWidth() + 5;
+      var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      // var windowWidth = $(window).width();
+      var cols = Math.floor(windowWidth / boxWidth);
+      var heightArr = [];
+      $.each(box,function(index,item){
+        let boxHeight = $(item).outerHeight() + 5;
+        if(index < cols) {
+          heightArr[index] = boxHeight;
+        } else {
+          let minboxHeight = Math.min(...heightArr);
+          let i = heightArr.indexOf(minboxHeight);
+          item.style.position = 'absolute';
+          item.style.top = minboxHeight + "px";
+          item.style.left = i*boxWidth + 'px';
+          // item.style = ({
+          //   position: "absolute",
+          //   top: minboxHeight + "px",
+          //   left: i*boxWidth + 'px'
+          // });
+          heightArr[i] += boxHeight;
+        }
+      })
+    }
   }
 }
 </script>
-<style lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss" scoped>
+  /*用js方法重新定位渲染*/
+  .warp {
+    position: relative;
+    height: 100vh;
+    /*height: 100%;*/
+    /*overflow-y: scroll;*/
+    .item {
+      display: inline-block;
+      border: solid 1px #f2f2f2;
+      padding: 5px;
+    }
+    img {
+      width: 250px;
+      vertical-align: top;
+    }
+  }
+  // 用column布局方法
+  /*.warp {*/
+    /*column-count: 4;*/
+    /*.item {*/
+      /*border: solid 1px #f2f2f2;*/
+      /*margin: 5px;*/
+      /*img {*/
+        /*width: 100%;*/
+      /*}*/
+    /*}*/
+  /*}*/
+  // 用flex布局
+  /*.warp {*/
+    /*display: flex;*/
+    /*flex-flow: column wrap;*/
+    /*height: 100vh;*/
+    /*.item {*/
+      /*width: calc(100%/4  - 10px);*/
+      /*margin: 5px;*/
+      /*img {*/
+        /*width: 100%;*/
+      /*}*/
+    /*}*/
+  /*}*/
   #dashboard {
     width: 100%;
     display: flex;
@@ -103,6 +199,7 @@ export default {
         border-bottom: 1px solid rgba(152, 152, 152, 0.5);
       }
     }
+
   }
 
 </style>

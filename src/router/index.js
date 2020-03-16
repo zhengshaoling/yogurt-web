@@ -31,6 +31,13 @@ export const constantRouterMap = [
         title: '首页'
       },
       component: _import('dashboard/index')
+    }, {
+      path: 'transfer',
+      name: 'Transfer',
+      meta: {
+        title: '穿梭框'
+      },
+      component: _import('dashboard/transfer')
     }]
   },
   {

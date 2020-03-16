@@ -86,7 +86,14 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-    ]
+    ],
+    plugins: [
+      new VueLoaderPlugin(),
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery:'jquery'
+      })
+    ],
   },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
